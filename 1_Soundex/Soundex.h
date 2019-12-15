@@ -11,12 +11,15 @@ public:
 
 private:
     static const size_t MaxCodeLength {4};
-    std::string zeroPad(const std::string & word) const;
-    std::string head(const std::string & word) const;
-    std::string encodedDigits(const std::string & word) const;
-    std::string tail(const std::string & word) const;
-    bool isComplete(const std::string & encoding) const;
+    std::string zeroPad(const std::string &word) const;
+    std::string head(const std::string &word) const;
+    std::string encodedDigits(const std::string &word) const;
+    std::string tail(const std::string &word) const;
+    bool isComplete(const std::string &encoding) const;
     std::string lastDigit(const std::string &encoding) const;
+    std::string upperFront(const std::string &string) const;
+    char lower(char c) const;
+    const std::string NotADigit{"*"};
 };
 
 #endif //SOUNDEX_SOUNDEXTEST_H
