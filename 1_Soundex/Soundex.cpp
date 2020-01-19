@@ -48,13 +48,14 @@ void Soundex::encodeHead(std::string &encoding, const std::string &word) const
 
 void Soundex::encodeTail(std::string &encoding, const std::string &word) const
 {
-    for(auto letter : tail(word))
+    for(auto i=1u; i!=word.length(); ++i)
     {
-        if ( !isComplete(encoding) ) encodeLetter(encoding, letter);
+        if(!isComplete(encoding))
+            encodeLetter(encoding, encoding[i], encoding[i-1]);
     }
 }
 
-void Soundex::encodeLetter(std::string &encoding, char letter) const
+void Soundex::encodeLetter(std::string &encoding, char letter, char lastLetter) const
 {
     auto digit = encodedDigit(letter);
     if(digit != NotADigit && digit != lastDigit(encoding))
@@ -88,4 +89,9 @@ std::string Soundex::upperFront(const std::string &string) const
 char Soundex::lower(char c) const
 {
     return std::tolower(static_cast<unsigned char>(c));
+}
+
+bool Soundex::isVowel(char letter) const
+{
+    std::string("aeiou").find(lower(letter)) != std::string::npos;
 }

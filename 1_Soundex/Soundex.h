@@ -16,12 +16,13 @@ private:
     std::string encodedDigits(const std::string &word) const;
     void encodeHead(std::string &encoding, const std::string &word) const;
     void encodeTail(std::string &encoding, const std::string &word) const;
-    void encodeLetter(std::string &encoding, char letter) const;
+    void encodeLetter(std::string &encoding, char letter, char lastLetter) const;
     std::string tail(const std::string &word) const;
     bool isComplete(const std::string &encoding) const;
     std::string lastDigit(const std::string &encoding) const;
     std::string upperFront(const std::string &string) const;
     char lower(char c) const;
+    bool isVowel(char c) const;
     const std::string NotADigit{"*"};
 };
 
